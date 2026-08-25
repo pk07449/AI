@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
 @Import(value = CommonConfig.class)
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.pankaj.ai"})
 public class HelloworldApplication {
 
 	public static void main(String[] args) {

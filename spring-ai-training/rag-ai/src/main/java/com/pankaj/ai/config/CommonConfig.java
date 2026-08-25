@@ -28,9 +28,14 @@ public class CommonConfig {
                     Final July closing numbers showed 512 units shipped.""");
             Document firstDoc4 = buildDocument("""
                     August targets are projected to rise by 5%.""");
-            vectorStore.add(List.of(firstDoc, firstDoc2, firstDoc3, firstDoc4));
+
+            Document firstDoc5 = buildDocument("""
+My name is Pankaj, I am 40 years old and live in Pune""");
+            vectorStore.add(List.of(firstDoc, firstDoc2, firstDoc3, firstDoc4, firstDoc5));
 
             //question : Did we hit our sales target last month?
+            //question : Extract customer information:               Pankaj is 40 years old.               He lives in Pune, Maharashtra.
+            //question : ?question=Did%20we%20hit%20our%20sales%20target%20last%20month?
         };
     }
 
