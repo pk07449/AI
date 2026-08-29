@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: mcp.server
+  ai:
+    mcp:
+      server:
+        protocol: STREAMABLE
+        transport: sse
+        sse:
+          path: /mcp/v1/sse
+
