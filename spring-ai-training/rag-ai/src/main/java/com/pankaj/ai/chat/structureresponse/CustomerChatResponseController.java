@@ -1,4 +1,4 @@
-package com.pankaj.ai.chat.response;
+package com.pankaj.ai.chat.structureresponse;
 
 //import com.openai.models.vectorstores.VectorStore;
 
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 
-@RequestMapping("/rag/ai/chatresponse/customer")
+@RequestMapping("/rag/ai/structureresponse/customer")
 public class CustomerChatResponseController {
 
     private final ChatClient chatClient;

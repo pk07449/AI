@@ -1,17 +1,12 @@
-package com.pankaj.ai.chat.response;
+package com.pankaj.ai.chat.structureresponse;
 
 //import com.openai.models.vectorstores.VectorStore;
 
 import org.jspecify.annotations.Nullable;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
-import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.document.Document;
-import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 //import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
 

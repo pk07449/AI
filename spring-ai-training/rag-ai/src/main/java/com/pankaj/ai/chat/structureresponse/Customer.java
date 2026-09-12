@@ -1,4 +1,4 @@
-package com.pankaj.ai.chat.response;
+package com.pankaj.ai.chat.structureresponse;
 
 public record Customer(
         String name,

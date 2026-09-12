@@ -14,7 +14,6 @@ import java.util.List;
 
 @Configuration
 public class CommonConfig {
-
     @Bean
     public CommandLineRunner loadDocuments(VectorStore vectorStore) {
         return _ -> {

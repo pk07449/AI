@@ -1,4 +1,4 @@
-package com.pankaj.ai.helloworld;
+package com.pankaj.ai;
 
 import com.pankaj.ai.config.CommonConfig;
 import org.springframework.boot.SpringApplication;
