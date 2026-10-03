@@ -1,4 +1,8 @@
+server:
+  port: 9001
 spring:
+  server:
+    port: 9001
   application:
     name: mcp.server
   ai:
@@ -8,4 +12,3 @@ spring:
         transport: sse
         sse:
           path: /mcp/v1/sse
-

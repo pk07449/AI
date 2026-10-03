@@ -12,6 +12,8 @@ public class OrderService {
     }
 
     public String cancel(String orderId, String reason) {
+        System.out.println(orderId);
+        System.out.println(reason);
         return null;
     }
 }

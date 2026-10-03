@@ -1,4 +1,4 @@
-package com.pankaj.spring.ai.springaimcpclient;
+package com.pankaj.spring.ai.springaiclientintegration;
 
 import io.modelcontextprotocol.client.McpClient;
 import org.springframework.ai.chat.client.ChatClient;
@@ -14,10 +14,12 @@ import java.util.Map;
 import java.util.Random;
 
 @SpringBootApplication
-public class SpringAiMcpClientApplication {
+public class SpringAiClientIntetegationApplication {
+
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringAiMcpClientApplication.class, args);
+
+        SpringApplication.run(SpringAiClientIntetegationApplication.class, args);
     }
 
     @Bean
@@ -26,12 +28,12 @@ public class SpringAiMcpClientApplication {
     }
 
     String userPrompt = """
-		track order id  #123456 for cancelation, order was placed worongly
+		track order id  #1234567abc for cancelation, order was placed worongly
 		""";
 
     @Bean
     public CommandLineRunner predefinedQuestions(ChatClient chatClient,
-                                                 WeatherTools weatherTools,
+
                                                  FunctionToolCallback functionToolCallback,
 
                                                  ToolCallbackProvider mcpToolProvider, List<McpClient> mcpClients) { // (3)
@@ -46,10 +48,11 @@ public class SpringAiMcpClientApplication {
 //                        .tools(mcpClients)
                         .tools(mcpToolProvider)
 //                        .tools(weatherTools, functionToolCallback, mcpToolProvider)
-   //                     .tools(weatherTools, functionToolCallback)
+                        //                     .tools(weatherTools, functionToolCallback)
 
                         .call()
                         .content());
     }
-//output : The current weather in Pune is sunny, and the current time is 12:08 PM on October 2, 2026.
+//output :
+
 }
