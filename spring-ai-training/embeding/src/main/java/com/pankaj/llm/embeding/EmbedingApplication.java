@@ -2,6 +2,8 @@ package com.pankaj.llm.embeding;
 
 import io.modelcontextprotocol.client.McpClient;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.ChatClientBuilderCustomizer;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +25,16 @@ public class EmbedingApplication {
     public ChatClient chatClient(ChatClient.Builder chatClientBuilder) { // (2)
         return chatClientBuilder.build();
     }
+
+    @Bean
+    ChatClientBuilderCustomizer loggingCustomizer() {
+        return builder -> builder.defaultAdvisors(
+                new SimpleLoggerAdvisor()
+        );
+    }
+
+
+
 //
 //    String userPrompt = """
 //		track order id  #12345679abcd for cancelation, order was placed worongly
