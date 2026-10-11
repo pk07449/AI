@@ -1,0 +1,66 @@
+package com.pankaj.llm.embeding;
+
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
+import org.springframework.ai.document.Document;
+import org.springframework.ai.vectorstore.SearchRequest;
+import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+public class OrderAgent {
+
+    private final ChatClient chatClient;
+//    private final VectorStore vectorStore;
+
+    public OrderAgent(  ChatClient.Builder builder,
+                        VectorStore vectorStore) {
+
+        QuestionAnswerAdvisor questionAnswerAdvisor = QuestionAnswerAdvisor.builder(vectorStore).build();
+        this.chatClient = builder
+                .defaultAdvisors(
+                        questionAnswerAdvisor
+                )
+                .build();
+//        this.vectorStore = vectorStore;
+    }
+
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/ask")
+    public String ask(@RequestParam String question) {
+
+//
+//        System.out.println("QUESTION = " + question);
+//
+//        List<Document> docs = vectorStore.similaritySearch(
+//                SearchRequest.builder()
+//                        .query(question)
+//                        .topK(2)
+//                        .build()
+//        );
+//
+//        System.out.println("DOCUMENT COUNT = " + docs.size());
+//
+//        docs.forEach(d ->
+//                System.out.println("DOCUMENT = " + d.getText())
+//        );
+
+        try {
+            String content = chatClient
+                    .prompt()
+                    .user(question)
+                    .call()
+                    .content();
+            return content;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+}

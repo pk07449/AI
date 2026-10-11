@@ -28,19 +28,19 @@ public class SpringAiClientIntetegationApplication {
     }
 
     String userPrompt = """
-		track order id  #1234567abc for cancelation, order was placed worongly
+		track order id  #1234567abcd for cancelation, order was placed worongly
 		""";
 
     @Bean
     public CommandLineRunner predefinedQuestions(ChatClient chatClient,
 
-                                                 FunctionToolCallback functionToolCallback,
 
                                                  ToolCallbackProvider mcpToolProvider, List<McpClient> mcpClients) { // (3)
         return args -> System.out.println(
                 chatClient
 
-                        .prompt(userPrompt) // (4)
+                        .prompt(userPrompt)
+                        // (4)
 
                         .toolContext(Map.of("progressToken", "token-" + new Random().nextInt())) // (5)
 //                        .toolCallbacks(mcpToolProvider) // (6)
