@@ -3,6 +3,7 @@ package com.pankaj.ai.chat.advisor;
 //import com.openai.models.vectorstores.VectorStore;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.document.Document;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import org.springframework.ai.vectorstore.VectorStore;
 //import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
 import org.springframework.ai.vectorstore.SearchRequest;
 
+import java.util.Arrays;
 import java.util.List;
 
 //import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
@@ -29,7 +31,7 @@ public class QuestionAnswerAdvisorController {
         QuestionAnswerAdvisor questionAnswerAdvisor = QuestionAnswerAdvisor.builder(vectorStore).build();
         this.chatClient = builder
                 .defaultAdvisors(
-questionAnswerAdvisor
+questionAnswerAdvisor,new SafeGuardAdvisor(Arrays.asList("pakistan"))
                 )
                 .build();
         this.vectorStore = vectorStore;
@@ -58,6 +60,7 @@ questionAnswerAdvisor
         try {
             String content = chatClient
                     .prompt()
+                    .advisors()
                     .user(question)
                     .call()
                     .content();

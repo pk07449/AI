@@ -33,31 +33,6 @@ public class EmbedingApplication {
         );
     }
 
-
-
-//
-//    String userPrompt = """
-//		track order id  #12345679abcd for cancelation, order was placed worongly
-//		""";
-//
-//    @Bean
-//    public CommandLineRunner predefinedQuestions(ChatClient chatClient,
-//
-//
-//                                                 ToolCallbackProvider mcpToolProvider, List<McpClient> mcpClients) { // (3)
-//        return args -> System.out.println(
-//                chatClient
-//
-//                        .prompt(userPrompt)
-//                        .system("You are order tracer agent, data should not go out side")
-//                        .advisors()
-////                        .toolContext(Map.of("progressToken", "token-" + new Random().nextInt())) // (5)
-//
-//                        .call()
-//                        .content());
-//    }
-//output :
-
 }
 
 

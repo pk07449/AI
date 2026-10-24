@@ -11,6 +11,7 @@ import org.springframework.ai.rag.generation.augmentation.ContextualQueryAugment
 import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -83,12 +84,22 @@ public class OrderAgent {
         try {
             return chatClient
                     .prompt()
+
                     .user(question)
                     .call()
                     .content();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Autowired
+    private IngestionService ingestionService;
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/data-save")
+    public String dataSave(@RequestParam String question) {
+        ingestionService.ingestFlatData(question);
+        return "OK";
     }
 
 }
